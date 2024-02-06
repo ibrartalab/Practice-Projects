@@ -124,10 +124,13 @@
       });
     });
 
-    btnsBox[0].addEventListener("click", function () {
+    //Improvising the logic.
+
+    function filterData(data, arg) {
       tbody.innerHTML = "";
-      DATA.filter((item) => {
-        if (item.name === "p1") {
+      console.log("work");
+      data.filter((item) => {
+        if (item.name === arg) {
           const newRow = tbody.insertRow();
           Object.values(item).forEach((value) => {
             const cell = newRow.insertCell();
@@ -135,31 +138,60 @@
           });
         }
       });
+    }
+
+    btnsBox[0].addEventListener("click", function () {
+      filterData(DATA, "p1");
     });
     btnsBox[1].addEventListener("click", function () {
-      tbody.innerHTML = "";
-      DATA.filter((item) => {
-        if (item.name === "p2") {
-          const newRow = tbody.insertRow();
-          Object.values(item).forEach((value) => {
-            const cell = newRow.insertCell();
-            cell.innerHTML = value;
-          });
-        }
-      });
+      filterData(DATA, "p2");
     });
     btnsBox[2].addEventListener("click", function () {
-      tbody.innerHTML = "";
-      DATA.filter((item) => {
-        if (item.name === "p3") {
-          const newRow = tbody.insertRow();
-          Object.values(item).forEach((value) => {
-            const cell = newRow.insertCell();
-            cell.innerHTML = value;
-          });
-        }
-      });
+      filterData(DATA, "p3");
     });
+
+
+
+
+
+    // Old logic-------
+
+    // btnsBox[0].addEventListener("click", function () {
+    //   tbody.innerHTML = "";
+    //   DATA.filter((item) => {
+    //     if (item.name === "p1") {
+    //       const newRow = tbody.insertRow();
+    //       Object.values(item).forEach((value) => {
+    //         const cell = newRow.insertCell();
+    //         cell.innerHTML = value;
+    //       });
+    //     }
+    //   });
+    // });
+    // btnsBox[1].addEventListener("click", function () {
+    //   tbody.innerHTML = "";
+    //   DATA.filter((item) => {
+    //     if (item.name === "p2") {
+    //       const newRow = tbody.insertRow();
+    //       Object.values(item).forEach((value) => {
+    //         const cell = newRow.insertCell();
+    //         cell.innerHTML = value;
+    //       });
+    //     }
+    //   });
+    // });
+    // btnsBox[2].addEventListener("click", function () {
+    //   tbody.innerHTML = "";
+    //   DATA.filter((item) => {
+    //     if (item.name === "p3") {
+    //       const newRow = tbody.insertRow();
+    //       Object.values(item).forEach((value) => {
+    //         const cell = newRow.insertCell();
+    //         cell.innerHTML = value;
+    //       });
+    //     }
+    //   });
+    // });
 
     // document.onload(()=>{
     //     const ul = document.createElement('ul')
