@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter</title>
+    <style>
+      .data-container {
+        width: 500px;
+        height: max-content;
+        margin-top: 40px;
+        margin-left: 40px;
+      }
+      table {
+        width: fit-content;
+        /* border-collapse:collapse; */
+        margin-top: 20px;
+        /* border-radius: 10px; */
+      }
+
+      th,
+      td {
+        /* border: 1px solid #b8b8b8; */
+        padding: 6px;
+        text-align: left;
+        width: fit-content;
+        margin: auto;
+      }
+
+      th {
+        background-color: #035c7e;
+        color: white;
+      }
+      th:first-child {
+        border-top-left-radius: 10px;
+      }
+      th:last-child {
+        border-top-right-radius: 10px;
+      }
+      tbody tr:last-of-type > td:first-child {
+        border-bottom-left-radius: 10px;
+      }
+      tbody tr td:nth-child(2) {
+        width: fit-content;
+        /* background-color: #06597f; */
+      }
+      tbody tr:last-of-type > td:last-child {
+        border-bottom-right-radius: 10px;
+      }
+      tr:hover {
+        background-color: #ddd;
+      }
+      td {
+        background-color: #ebebeb60;
+        font-size: 15px;
+      }
+      tr:nth-child(even) {
+        background-color: #ecf4f6;
+      }
+
+      th:first-child {
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <input id="s-input" type="text" placeholder="search..." />
+        <button id="search-btn">🔍</button>
+      </div>
+      <div class="btns-container">
+        <button id="p1">p1</button>
+        <button id="p2">p2</button>
+        <button id="p3">p3</button>
+      </div>
+    </div>
+    <div class="data-container">
+      <table class="table">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    //Data
+    const DATA = [
+      { name: "p1", price: 200, rating: 4.5 },
+      { name: "p1", price: 200, rating: 4.5 },
+      { name: "p1", price: 200, rating: 4.5 },
+      { name: "p2", price: 300, rating: 4.3 },
+      { name: "p2", price: 300, rating: 4.3 },
+      { name: "p2", price: 300, rating: 4.3 },
+      { name: "p3", price: 400, rating: 3.3 },
+      { name: "p3", price: 400, rating: 3.3 },
+      { name: "p3", price: 400, rating: 3.3 },
+      { name: "p3", price: 400, rating: 3.3 },
+    ];
+
+    //Accessing the DOM Eelemnets
+    let searchBox = document.getElementById("#s-input");
+    let searchBtn = document.getElementById("#search=btn");
+    let dataContainer = document.querySelector(".data-container");
+    let table = document.querySelector(".table");
+    let thead = table.getElementsByTagName("thead")[0];
+    let tbody = table.getElementsByTagName("tbody")[0];
+    let btnsBox = document.querySelector(".btns-container").children;
+
+    // Adding Headers Dynamically Into the table thead seection
+    Object.keys(DATA[0]).forEach((header) => {
+      // console.log(header)
+      const th = document.createElement("th");
+      th.innerHTML = header;
+      thead.appendChild(th);
+    });
+
+    //Adding value to each cell in the table tbody tr dynamically
+    DATA.forEach((item) => {
+      // console.log(item)
+      const newRow = tbody.insertRow();
+      Object.values(item).forEach((value) => {
+        const cell = newRow.insertCell();
+        cell.innerHTML = value;
+      });
+    });
+
+    btnsBox[0].addEventListener("click", function () {
+      tbody.innerHTML = "";
+      DATA.filter((item) => {
+        if (item.name === "p1") {
+          const newRow = tbody.insertRow();
+          Object.values(item).forEach((value) => {
+            const cell = newRow.insertCell();
+            cell.innerHTML = value;
+          });
+        }
+      });
+    });
+    btnsBox[1].addEventListener("click", function () {
+      tbody.innerHTML = "";
+      DATA.filter((item) => {
+        if (item.name === "p2") {
+          const newRow = tbody.insertRow();
+          Object.values(item).forEach((value) => {
+            const cell = newRow.insertCell();
+            cell.innerHTML = value;
+          });
+        }
+      });
+    });
+    btnsBox[2].addEventListener("click", function () {
+      tbody.innerHTML = "";
+      DATA.filter((item) => {
+        if (item.name === "p3") {
+          const newRow = tbody.insertRow();
+          Object.values(item).forEach((value) => {
+            const cell = newRow.insertCell();
+            cell.innerHTML = value;
+          });
+        }
+      });
+    });
+
+    // document.onload(()=>{
+    //     const ul = document.createElement('ul')
+    //     DATA.forEach(item => {
+    //         const li = document.createElement('li')
+    //         li.innerHTML = item;
+    //         ul.appendChild(li)
+    //     })
+    //    dataContainer.appendChild(ul)
+    // })
+  </script>
+</html>
