@@ -61,12 +61,21 @@
       th:first-child {
         width: 50px;
       }
+
+      .loader{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: aquamarine;
+        text-align: center;
+        line-height: 6rem;
+      }
     </style>
   </head>
   <body>
     <div>
       <div>
-        <input id="s-input" type="text" placeholder="search..." />
+        <input id="s-input" type="text" placeholder="search..."  />
         <button id="search-btn">🔍</button>
       </div>
       <div class="btns-container">
@@ -83,6 +92,7 @@
     </div>
   </body>
   <script>
+    
     //Data
     const DATA = [
       { name: "p1", price: 200, rating: 4.5 },
@@ -106,6 +116,7 @@
     let tbody = table.getElementsByTagName("tbody")[0];
     let btnsBox = document.querySelector(".btns-container").children;
 
+
     // Adding Headers Dynamically Into the table thead seection
     Object.keys(DATA[0]).forEach((header) => {
       // console.log(header)
@@ -116,7 +127,7 @@
 
     //Adding value to each cell in the table tbody tr dynamically
     DATA.forEach((item) => {
-      // console.log(item)
+      console.log(item)
       const newRow = tbody.insertRow();
       Object.values(item).forEach((value) => {
         const cell = newRow.insertCell();
@@ -125,7 +136,6 @@
     });
 
     //Improvising the logic.
-
     function filterData(data, arg) {
       tbody.innerHTML = "";
       console.log("work");
@@ -139,6 +149,8 @@
         }
       });
     }
+
+
 
     btnsBox[0].addEventListener("click", function () {
       filterData(DATA, "p1");
@@ -154,7 +166,16 @@
 
 
 
-    // Old logic-------
+
+
+
+
+
+
+
+
+
+        // Old logic-------
 
     // btnsBox[0].addEventListener("click", function () {
     //   tbody.innerHTML = "";
@@ -192,15 +213,7 @@
     //     }
     //   });
     // });
-
-    // document.onload(()=>{
-    //     const ul = document.createElement('ul')
-    //     DATA.forEach(item => {
-    //         const li = document.createElement('li')
-    //         li.innerHTML = item;
-    //         ul.appendChild(li)
-    //     })
-    //    dataContainer.appendChild(ul)
-    // })
   </script>
 </html>
+
+
